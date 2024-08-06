@@ -1,19 +1,20 @@
-# task - find largest primefactor of a number
+# print largest prime factors
 
-t = int(input().strip()) # number of test cases
+t = int(input().strip())
 for a0 in range(t):
-    n = int(input().strip())  
-
+    n = int(input().strip())
+    
     primeFactorsList=[]
-    d=2
-    while n >1:
-        # adding all divisor to primeFactors (all divisors are prime factors )
-        while n%d==0:
-            primeFactorsList.append(d)
-            n//=d
-        d+=1
-            
+    while n%2==0:
+        primeFactorsList.append(2)            
+        n//=2
+    
+    # use step value 2 because want to iterate only  odd number
+    for i in range(3,int(n**0.5)+1,2):
+        while n%i==0:
+            primeFactorsList.append(i)            
+            n//=i
+
+    if n>2:
+        primeFactorsList.append(n)
     print(max(primeFactorsList))
-
-
-# note - all number can is divisible by any prime nuber
